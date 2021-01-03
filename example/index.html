@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/main.css"></link>
+  </head>
+  <body>
+    <h1>icon font</h1>
+    <div class="test" style="height: 100px">
+      <i class="iconfont icon-bag green-icon"></i>
+      <span class="icon iconfont icon-bag orange-icon"></span>
+
+      <button id="btnModal">open modal</button>
+
+      <button id="btnModal2">open modal2</button>
+    </div>
+    <script src="../dist/lz-modal.js"></script>
+    <script>
+      console.log(lzModal)
+      const btnModal = document.querySelector('#btnModal');
+
+btnModal?.addEventListener('click', () => {
+  lzModal({
+    title: 'this is modal...', width: 400, height: '300px', mask: false, content: ele => {
+      const temp = document.createElement('div')
+      temp.innerHTML = `
+        <div class="test-modal-content">
+          this is content....
+        </div>
+      `
+      ele.appendChild(temp)
+    }
+  })
+})
+
+const btnModal2 = document.querySelector('#btnModal2');
+
+btnModal2?.addEventListener('click', () => {
+  const temp = document.createElement('div')
+  temp.innerHTML = `
+        <div class="test-modal-content">
+          this is content 2....
+        </div>
+      `
+  lzModal({
+    title: 'this is modal...', width: 400, height: '300px', mask: true, content: temp
+  })
+})
+    </script>
+  </body>
+</html>
